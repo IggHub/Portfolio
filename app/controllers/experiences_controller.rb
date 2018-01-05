@@ -18,4 +18,20 @@ class ExperiencesController < ApplicationController
       end
     end
   end
+
+  def edit
+    @experience = Experience.find(params[:id]) #params is URI
+  end
+
+  def update
+    @experience = Experience.find(params[:id])
+
+    respond_to do |format|
+      if @experience.update(params.require(:experience).permit(:title, :subtitle, :body))
+        format.html { redirect_to experiences_path, notice: 'Blog was successfully updated.' }
+      else
+        format.html { render :edit }
+      end
+    end
+  end
 end
