@@ -1,0 +1,8 @@
+<h1>Portfolio items</h1>
+
+<% @experiences.each do |experience| %>
+  <p><%= experience.title %></p>
+  <p><%= experience.subtitle %></p>
+  <p><%= experience.body %></p>
+  <%= image_tag experience.thumb_image %>
+<% end %>
