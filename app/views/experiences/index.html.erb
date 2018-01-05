@@ -4,5 +4,8 @@
   <p><%= experience.title %></p>
   <p><%= experience.subtitle %></p>
   <p><%= experience.body %></p>
-  <%= image_tag experience.thumb_image %>
+  <% if experience.thumb_image %>
+    <%= image_tag experience.thumb_image %>
+  <% end %>
+
 <% end %>
