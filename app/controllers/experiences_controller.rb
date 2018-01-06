@@ -6,7 +6,7 @@ class ExperiencesController < ApplicationController
   def show
     @experience = Experience.find(params[:id])
   end
-  
+
   def new
     @experience = Experience.new
   end
@@ -36,6 +36,17 @@ class ExperiencesController < ApplicationController
       else
         format.html { render :edit }
       end
+    end
+  end
+
+  def destroy
+    #lookup
+    @experience = Experience.find(params[:id])
+    #destroy action
+    @experience.destroy
+    #after-effect/ redirect
+    respond_to do |format|
+      format.html {redirect_to experiences_url, notice: 'Portfolio was removed'}
     end
   end
 end
