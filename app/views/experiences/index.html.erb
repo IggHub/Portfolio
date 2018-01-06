@@ -1,7 +1,14 @@
 <h1>Portfolio items</h1>
 
+<%= link_to "New Item", new_experience_path %>
+
+<p><%= new_experience_url %></p>
+
 <% @experiences.each do |experience| %>
-  <p><%= experience.title %></p>
+  <p>
+    <%= experience.title %>
+    <%= link_to "Edit", edit_experience_path(experience) %>
+  </p>
   <p><%= experience.subtitle %></p>
   <p><%= experience.body %></p>
   <% if experience.thumb_image %>
