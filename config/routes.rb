@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
-  resources :experiences
-  get 'pages/home'
+  resources :experiences, except: [:show]
 
-  get 'pages/about'
+  get 'experience/:id', to: 'experiences#show', as: 'experience_show'
 
-  get 'pages/contact'
+  get 'about-me', to: 'pages#about'
+  get 'contact', to: 'pages#contact'
 
   resources :blogs
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  root to: 'pages#home'
 end
