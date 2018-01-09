@@ -3,6 +3,10 @@ class ExperiencesController < ApplicationController
     @experiences = Experience.all
   end
 
+  def react
+    @react_portfolio_items = Experience.react
+  end
+
   def show
     @experience = Experience.find(params[:id])
   end

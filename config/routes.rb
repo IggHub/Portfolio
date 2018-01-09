@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :experiences, except: [:show]
 
+  get 'react-items', to: 'experiences#react'
   get 'experience/:id', to: 'experiences#show', as: 'experience_show'
 
   get 'about-me', to: 'pages#about'
