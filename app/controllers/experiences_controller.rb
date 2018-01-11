@@ -13,10 +13,11 @@ class ExperiencesController < ApplicationController
 
   def new
     @experience = Experience.new
+    3.times { @experience.technologies.build }
   end
 
   def create
-    @experience = Experience.new(params.require(:experience).permit(:title, :subtitle, :body))
+    @experience = Experience.new(params.require(:experience).permit(:title, :subtitle, :body, technologies_attributes: [:name]))
 
     respond_to do |format|
       if @experience.save

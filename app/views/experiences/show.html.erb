@@ -4,3 +4,9 @@
 <em><%= @experience.subtitle%></em>
 
 <p><%= @experience.body %> </p>
+
+<h2>Technologies Used:</h2>
+
+<% @experience.technologies.each do |technology| %>
+  <p><%= technology.name %> </p>
+<% end %>
