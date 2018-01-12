@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :experiences, except: [:show]
 
   get 'react-items', to: 'experiences#react'
