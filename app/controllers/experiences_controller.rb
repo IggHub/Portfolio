@@ -17,7 +17,7 @@ class ExperiencesController < ApplicationController
   end
 
   def create
-    @experience = Experience.new(params.require(:experience).permit(:title, :subtitle, :body, technologies_attributes: [:name]))
+    @experience = Experience.new(experience_params)
 
     respond_to do |format|
       if @experience.save
@@ -36,7 +36,7 @@ class ExperiencesController < ApplicationController
     @experience = Experience.find(params[:id])
 
     respond_to do |format|
-      if @experience.update(params.require(:experience).permit(:title, :subtitle, :body))
+      if @experience.update(experience_params)
         format.html { redirect_to experiences_path, notice: 'Blog was successfully updated.' }
       else
         format.html { render :edit }
@@ -53,5 +53,15 @@ class ExperiencesController < ApplicationController
     respond_to do |format|
       format.html {redirect_to experiences_url, notice: 'Portfolio was removed'}
     end
+  end
+
+  private
+
+  def experience_params
+    params.require(:experience).permit(:title,
+                                      :subtitle,
+                                      :body,
+                                      technologies_attributes: [:name]
+                                    )
   end
 end
