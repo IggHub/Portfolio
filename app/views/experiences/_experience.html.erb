@@ -1,0 +1,8 @@
+<h2><%= link_to experience.title, experience_show_path(experience) %></h2>
+<p><%= link_to "Edit", edit_experience_path(experience) %></p>
+<p><%= experience.subtitle %></p>
+<p><%= experience.body %></p>
+<% if experience.thumb_image %>
+  <%= image_tag experience.thumb_image %>
+<% end %>
+<p><%= link_to "Delete Portfolio Item", experience_path(experience), method: :delete, data:{confirm: "are you sure?"} %></p>
