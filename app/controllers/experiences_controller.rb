@@ -1,4 +1,6 @@
 class ExperiencesController < ApplicationController
+  layout 'experience'
+  
   def index
     @experiences = Experience.all
   end
