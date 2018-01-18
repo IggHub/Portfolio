@@ -1,6 +1,7 @@
 class ExperiencesController < ApplicationController
+  before_action :set_experience, only: [:edit, :show, :update, :destroy]
   layout 'experience'
-  
+
   def index
     @experiences = Experience.all
   end
@@ -10,7 +11,6 @@ class ExperiencesController < ApplicationController
   end
 
   def show
-    @experience = Experience.find(params[:id])
   end
 
   def new
@@ -31,12 +31,9 @@ class ExperiencesController < ApplicationController
   end
 
   def edit
-    @experience = Experience.find(params[:id]) #params is URI
   end
 
   def update
-    @experience = Experience.find(params[:id])
-
     respond_to do |format|
       if @experience.update(experience_params)
         format.html { redirect_to experiences_path, notice: 'Blog was successfully updated.' }
@@ -47,8 +44,6 @@ class ExperiencesController < ApplicationController
   end
 
   def destroy
-    #lookup
-    @experience = Experience.find(params[:id])
     #destroy action
     @experience.destroy
     #after-effect/ redirect
@@ -58,6 +53,9 @@ class ExperiencesController < ApplicationController
   end
 
   private
+  def set_experience
+    @experience = Experience.find(params[:id])
+  end
 
   def experience_params
     params.require(:experience).permit(:title,
