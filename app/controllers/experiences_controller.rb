@@ -2,6 +2,8 @@ class ExperiencesController < ApplicationController
   before_action :set_experience, only: [:edit, :show, :update, :destroy]
   layout 'experience'
 
+  access all: [:show, :index, :react], user: {except: [:destroy, :new, :create, :update, :edit]}, site_admin: :all
+
   def index
     @experiences = Experience.all
   end

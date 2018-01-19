@@ -1,5 +1,5 @@
 <h1>Portfolio items</h1>
 
-<%= link_to "New Item", new_experience_path %>
+<%= link_to "New Item", new_experience_path if logged_in?(:site_admin) %>
 
 <%= render partial: "experience", collection: @experiences %>
