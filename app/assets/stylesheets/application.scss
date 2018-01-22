@@ -160,3 +160,20 @@ body {
     width: 65rem;
   }
 }
+
+/*
+* Custom bootstrap styles
+*/
+
+.card-block {
+  color: black;
+  text-align: left;
+}
+
+.auth-links a {
+  color: black;
+}
+
+.card-block {
+    padding: 10px !important;
+}
