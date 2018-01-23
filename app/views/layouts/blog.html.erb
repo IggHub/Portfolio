@@ -1,38 +1,35 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <title><%= @page_title %></title>
     <%= csrf_meta_tags %>
 
     <meta name="keywords" content="<%= @seo_keywords %>" />
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <%= stylesheet_link_tag    'blogs', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
 
-    <!-- start nav -->
     <%= render 'shared/blog_nav' %>
-    <!-- end nav -->
 
-    <!-- start blog header -->
+    <!-- start of blog header -->
     <div class="blog-header">
       <div class="container">
-        <h1 class="blog-title">The Bootstrap Blog</h1>
+        <h1 class="blog-title">Iggy Blog</h1>
         <p class="lead blog-description">An example blog template built with Bootstrap.</p>
+        <%= link_to 'Write a New Blog', new_blog_path if logged_in?(:site_admin) %>
       </div>
     </div>
-    <!-- end blog header -->
+    <!-- end of blog header -->
 
-    <!-- start container element -->
     <div class="container">
-      <!-- start container and row element -->
+
       <div class="row">
-
-
-        <%= login_helper %>
 
         <%= yield %>
 
@@ -67,27 +64,20 @@
               <li><a href="#">Facebook</a></li>
             </ol>
           </div>
-        </div><!-- /.blog-sidebar -->
-
+        </div>
         <!-- end of sidebar -->
+      </div>
 
-        <!-- start footer -->
-
+        <!-- start of footer -->
         <footer class="blog-footer">
           <p>Blog template built for <a href="https://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
           <p>
             <a href="#">Back to top</a>
           </p>
         </footer>
-
-        <!-- end footer -->
-        <%= render "shared/nav", location: 'bottom' %>
+        <!-- end of footer -->
 
         <%= source_helper("blog") %>
-
-      </div>
-      <!-- end row element -->
     </div>
-    <!-- end container element -->
   </body>
 </html>
